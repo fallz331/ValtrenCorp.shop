@@ -1,1 +1,0 @@
-export default function Page(){return <div style={padding:24,color:"#e5e7eb"}><h1>WhatsApp Funnel — Chat jadi cuan.</h1><p>Halaman layanan siap.</p></div>}
