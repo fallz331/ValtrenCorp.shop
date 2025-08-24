@@ -1,1 +1,3 @@
-export default function Page(){return <div style={{padding:24}}>Pixel Audit — siap.</div>}
+export default function Page() {
+  return <div style={{padding:24}}>Pixel & Conversion Audit — siap.</div>;
+}
