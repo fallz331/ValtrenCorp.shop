@@ -1,3 +1,7 @@
+// app/page.js
+export const revalidate = 3600;        // cache 1 jam di edge (ISR)
+export const dynamic = 'force-static'; // paksa static kalau memungkinkan
+
 import Link from "next/link";
 
 export default function Home() {
