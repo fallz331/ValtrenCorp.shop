@@ -1,3 +1,6 @@
+// app/page.js
+export const revalidate = 3600;        // cache 1 jam di edge (ISR)
+export const dynamic = 'force-static'; // paksa static kalau memungkinkan
 export const metadata = { title: "GBP Sprint — Valtren" };
 const WA = process.env.NEXT_PUBLIC_WA || "62812xxxxxxx";
 export default function Page() {
