@@ -40,18 +40,18 @@ export default function Home() {
       </section>
 
       {/* VALUE PROPS */}
-      <section className="container mt-12 grid gap-6 sm:grid-cols-3">
-        {[
-          { t: "Cepat", d: "SSR/ISR + edge cache. Page load ringan dan konsisten." },
-          { t: "Terukur", d: "Pixel & analytics rapi. Keputusan berbasis data." },
-          { t: "Siap Scale", d: "Arsitektur modular. Tambah funnel tanpa pusing." },
-        ].map((x) => (
-          <div key={x.t} className="card">
-            <h3 className="text-lg font-bold">{x.t}</h3>
-            <p className="mt-2 text-gray-600">{x.d}</p>
-          </div>
-        ))}
-      </section>
+<section className="container mt-12 grid gap-6 sm:grid-cols-3">
+  {[
+    { t: "Cepat",     d: "SSR/ISR + edge cache. Page load ringan dan konsisten." },
+    { t: "Terukur",   d: "Pixel & analytics rapi. Keputusan berbasis data." },
+    { t: "Siap Scale", d: "Arsitektur modular. Tambah funnel tanpa pusing." },
+  ].map((x) => (
+    <div key={x.t} className="card">
+      <h3 className="text-lg font-bold">{x.t}</h3>
+      <p className="mt-2 text-gray-600">{x.d}</p>
+    </div>
+  ))}
+</section>
 
       {/* PROOF / SOCIAL */}
       <section className="container mt-12 card">
