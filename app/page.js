@@ -1,5 +1,6 @@
-export const revalidate = 3600;
-export const dynamic = "force-static";
+// app/page.js
+export const revalidate = 3600;        // cache ISR 1 jam
+export const dynamic = "force-static"; // paksa statis untuk performa
 
 import Link from "next/link";
 
@@ -9,58 +10,66 @@ export const metadata = {
 };
 
 export default function Home() {
+  // Data statis yang dipakai untuk render (aman buat SSG/ISR)
   const funnels = [
     { href: "/gbp-sprint", title: "GBP Sprint", desc: "Optimasi Google Business Profile dalam 7 hari." },
     { href: "/marketplace-makeover", title: "Marketplace Makeover", desc: "Naikkan performa listing & conversion." },
-    { href: "/pixel-audit", title: "Pixel Audit", desc: "Audit tracking & events untuk iklan yang efisien." },
-    { href: "/wa-funnel", title: "WA Funnel", desc: "Funnel chat yang ngebut dari klik ke closing." },
+    { href: "/pixel-audit", title: "Pixel Audit", desc: "Audit tracking & events untuk iklan efisien." },
+    { href: "/wa-funnel", title: "WA Funnel", desc: "Funnel chat kencang dari klik ke closing." },
+  ];
+
+  const valueProps = [
+    { title: "Cepat", desc: "ISR + edge cache. Page load kencang dan stabil." },
+    { title: "Terukur", desc: "Pixel & analytics rapi. Keputusan berbasis data." },
+    { title: "Siap Scale", desc: "Modular. Tambah funnel tanpa bongkar fondasi." },
   ];
 
   return (
     <>
-      {/* di dalam hero box */}
-<img src="/logo.svg" alt="Valtren" className="mt-4 h-10 opacity-90" />
+      {/* HERO dengan gradien sesuai palette */}
       <section className="container">
-        <div className="rounded-3xl bg-gradient-to-br from-muted via-primary-600 to-primary-400 text-white p-10 md:p-16 shadow-soft">
-          <span className="badge border-white/30 bg-white/10 text-white">Valtren Corp HQ</span>
+        <div className="rounded-3xl bg-gradient-to-br from-[#0B2C36] via-[#135868] to-[#2B7A8C] text-white p-10 md:p-16 shadow-[0_8px_30px_rgba(0,0,0,0.08)]">
+          <span className="inline-flex items-center rounded-full border border-white/30 bg-white/10 px-3 py-1 text-xs font-medium">
+            Valtren Corp HQ
+          </span>
           <h1 className="mt-4 text-4xl md:text-5xl font-extrabold leading-tight">
-            Growth Engine untuk <span className="text-accent">Bisnis yang Ngebut</span>
+            Growth Engine untuk <span className="text-[#17B894]">Bisnis yang Ngebut</span>
           </h1>
           <p className="mt-3 text-white/90 max-w-2xl">
             Multi-funnel terintegrasi: SEO lokal, marketplace, tracking, hingga chat-closing.
             Dibangun di edge, cepat, dan siap scale.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
-            <Link href="/wa-funnel" className="btn btn-primary">
+            <Link href="/wa-funnel" className="inline-flex items-center rounded-xl px-5 py-3 font-medium bg-[#17B894] text-white hover:opacity-90">
               Mulai dari WA Funnel
             </Link>
-            <a href="#funnels" className="btn btn-ghost">Lihat Semua Funnel</a>
+            <a href="#funnels" className="inline-flex items-center rounded-xl px-5 py-3 font-medium bg-white/10 text-white border border-white/20 hover:bg-white/20">
+              Lihat Semua Funnel
+            </a>
           </div>
         </div>
       </section>
 
       {/* VALUE PROPS */}
-<section className="container mt-12 grid gap-6 sm:grid-cols-3">
-  {[
-    { t: "Cepat",     d: "SSR/ISR + edge cache. Page load ringan dan konsisten." },
-    { t: "Terukur",   d: "Pixel & analytics rapi. Keputusan berbasis data." },
-    { t: "Siap Scale", d: "Arsitektur modular. Tambah funnel tanpa pusing." },
-  ].map((x) => (
-    <div key={x.t} className="card">
-      <h3 className="text-lg font-bold">{x.t}</h3>
-      <p className="mt-2 text-gray-600">{x.d}</p>
-    </div>
-  ))}
-</section>
+      <section className="container mt-12 grid gap-6 sm:grid-cols-3">
+        {valueProps.map((item) => (
+          <div key={item.title} className="bg-white rounded-2xl p-6 border border-gray-100 shadow-[0_8px_30px_rgba(0,0,0,0.08)]">
+            <h3 className="text-lg font-bold">{item.title}</h3>
+            <p className="mt-2 text-gray-600">{item.desc}</p>
+          </div>
+        ))}
+      </section>
 
-      {/* PROOF / SOCIAL */}
-      <section className="container mt-12 card">
+      {/* PROOF / BADGES */}
+      <section className="container mt-12 bg-white rounded-2xl p-6 border border-gray-100 shadow-[0_8px_30px_rgba(0,0,0,0.08)]">
         <h3 className="text-xl font-bold">Trusted by executors</h3>
-        <p className="mt-2 text-gray-600">Digunakan untuk sprint cepat, audit, dan closing harian.</p>
+        <p className="mt-2 text-gray-600">Dipakai buat sprint cepat, audit, dan closing harian.</p>
         <div className="mt-4 flex flex-wrap gap-2">
-          <span className="badge border-primary/20 text-primary">Edge Ready</span>
-          <span className="badge border-primary/20 text-primary">SEO Friendly</span>
-          <span className="badge border-primary/20 text-primary">WA First</span>
+          {["Edge Ready", "SEO Friendly", "WA First"].map((label) => (
+            <span key={label} className="inline-flex items-center rounded-full border border-[#0E3A47]/20 px-3 py-1 text-xs font-medium text-[#0E3A47]">
+              {label}
+            </span>
+          ))}
         </div>
       </section>
 
@@ -68,26 +77,32 @@ export default function Home() {
       <section id="funnels" className="container mt-12">
         <h2 className="text-2xl font-bold">Pilih Jalur Eksekusi</h2>
         <div className="mt-6 grid gap-6 sm:grid-cols-2">
-          {funnels.map((f) => (
-            <Link key={f.href} href={f.href} className="card hover:shadow-lg transition">
-              <h3 className="text-lg font-bold">{f.title}</h3>
-              <p className="mt-2 text-gray-600">{f.desc}</p>
-              <span className="mt-4 inline-flex text-primary">Pelajari →</span>
+          {funnels.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="bg-white rounded-2xl p-6 border border-gray-100 hover:shadow-lg transition-shadow"
+            >
+              <h3 className="text-lg font-bold">{item.title}</h3>
+              <p className="mt-2 text-gray-600">{item.desc}</p>
+              <span className="mt-4 inline-flex text-[#0E3A47]">Pelajari →</span>
             </Link>
           ))}
         </div>
       </section>
 
-      {/* CTA BOTTOM */}
+      {/* CTA BOTTOM dengan gradien */}
       <section className="container mt-12 mb-16">
-        <div className="rounded-3xl bg-gradient-to-r from-primary to-primary-400 text-white p-8 md:p-12 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+        <div className="rounded-3xl p-8 md:p-12 text-white bg-gradient-to-r from-[#0E3A47] to-[#2B7A8C] flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           <div>
-            <h3 className="text-2xl font-bold">Siap gas? Kita eksekusi tanpa drama.</h3>
-            <p className="text-white/90">Bantuin lu set funnel, tracking, sampai closing.</p>
+            <h3 className="text-2xl font-bold">Siap gas? Eksekusi tanpa drama.</h3>
+            <p className="text-white/90">Kami bantu set funnel, tracking, sampai closing.</p>
           </div>
-          <Link href="/wa-funnel" className="btn btn-ghost">Chat sekarang</Link>
+          <Link href="/wa-funnel" className="inline-flex items-center rounded-xl px-5 py-3 font-medium bg-white/10 text-white border border-white/20 hover:bg-white/20">
+            Chat sekarang
+          </Link>
         </div>
       </section>
     </>
   );
-}n
+}
