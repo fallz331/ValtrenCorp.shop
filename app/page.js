@@ -18,7 +18,8 @@ export default function Home() {
 
   return (
     <>
-      {/* HERO */}
+      {/* di dalam hero box */}
+<img src="/logo.svg" alt="Valtren" className="mt-4 h-10 opacity-90" />
       <section className="container">
         <div className="rounded-3xl bg-gradient-to-br from-muted via-primary-600 to-primary-400 text-white p-10 md:p-16 shadow-soft">
           <span className="badge border-white/30 bg-white/10 text-white">Valtren Corp HQ</span>
