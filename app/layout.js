@@ -1,4 +1,4 @@
-// TEMP LAYOUT MINIMAL (isolasi masalah)
+// app/layout.js — super minimal
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
