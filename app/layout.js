@@ -1,15 +1,22 @@
-import "../globals.css";
+import "./globals.css";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 
-export const metadata = { title: "Valtren Corp", description: "Multi-funnel by Valtren" };
+export const metadata = {
+  title: "Valtren Corp",
+  description: "Multi-funnel marketing by Valtren Corp.",
+};
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-gray-50 text-gray-900">
-        <NavBar />
-        <main className="mx-auto max-w-5xl px-4 py-10">{children}</main>
+      <body>
+        <div className="bg-gradient-to-br from-muted via-primary-600 to-primary-400">
+          <NavBar />
+          {/* Hero gradient background only at top */}
+          <div className="h-10" />
+        </div>
+        <main className="container -mt-10">{children}</main>
         <Footer />
       </body>
     </html>
