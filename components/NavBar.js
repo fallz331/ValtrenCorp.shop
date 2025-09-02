@@ -1,14 +1,25 @@
 import Link from "next/link";
+
 export default function NavBar() {
+  const links = [
+    { href: "/", label: "Home" },
+    { href: "/gbp-sprint", label: "GBP Sprint" },
+    { href: "/marketplace-makeover", label: "Marketplace" },
+    { href: "/pixel-audit", label: "Pixel Audit" },
+    { href: "/wa-funnel", label: "WA Funnel" },
+  ];
   return (
-    <header className="sticky top-0 z-10 bg-white/80 backdrop-blur border-b">
-      <nav className="mx-auto max-w-5xl px-4 py-3 flex items-center gap-6">
-        <Link href="/" className="font-bold">Valtren Corp</Link>
-        <div className="text-sm flex gap-4">
-          <Link href="/gbp-sprint">GBP Sprint</Link>
-          <Link href="/marketplace-makeover">Marketplace</Link>
-          <Link href="/pixel-audit">Pixel Audit</Link>
-          <Link href="/wa-funnel">WA Funnel</Link>
+    <header className="bg-transparent">
+      <nav className="container py-4 flex items-center justify-between">
+        <Link href="/" className="text-white font-extrabold text-xl tracking-wide">
+          VALTREN
+        </Link>
+        <div className="hidden sm:flex gap-6">
+          {links.map((l) => (
+            <Link key={l.href} href={l.href} className="text-white/90 hover:text-white">
+              {l.label}
+            </Link>
+          ))}
         </div>
       </nav>
     </header>
